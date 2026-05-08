@@ -42,7 +42,7 @@ const calendars: CalendarConfig[] = [
       days: {
         weekdays: [0, 1, 1, 1, 1, 1, 0],
         dates: {
-          "2025-04-08": false
+          "2026-07-08": false
         }
       }
     }
@@ -52,13 +52,13 @@ const calendars: CalendarConfig[] = [
 const markers: Marker[] = [
   {
     id: "project-start",
-    start_date: new Date(2025, 3, 3),
+    start_date: new Date(2026, 6, 3),
     text: "Project start",
     css: "project-start"
   },
   {
     id: "project-end",
-    start_date: new Date(2025, 4, 1),
+    start_date: new Date(2026, 6, 1),
     text: "Project end",
     css: "project-end"
   }

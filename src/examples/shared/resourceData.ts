@@ -8,12 +8,12 @@ export interface ResourceDemoData {
 
 const baseData: ResourceDemoData = {
   tasks: [
-    { id: 1, text: "Office itinerancy", type: "project", start_date: "02-04-2025 00:00", duration: 12, progress: 0.4, owner: [{ resource_id: "6", value: 3 }], parent: 0, open: true },
-    { id: 2, text: "Office facing", type: "project", start_date: "02-04-2025 00:00", duration: 8, progress: 0.6, owner: [{ resource_id: "6", value: 4 }], parent: 1, open: true },
-    { id: 3, text: "Furniture installation", type: "task", start_date: "11-04-2025 00:00", duration: 6, progress: 0.6, owner: [{ resource_id: "7", value: 5 }], parent: 2 },
-    { id: 4, text: "Integration", type: "task", start_date: "13-04-2025 00:00", duration: 4, progress: 0.5, owner: [{ resource_id: "8", value: 2 }], parent: 2 },
-    { id: 5, text: "Testing", type: "task", start_date: "16-04-2025 00:00", duration: 3, progress: 0.3, owner: [{ resource_id: "9", value: 4 }], parent: 2 },
-    { id: 6, text: "Documentation", type: "task", start_date: "20-04-2025 00:00", duration: 5, progress: 0.2, owner: [{ resource_id: "6", value: 2 }], parent: 2 }
+    { id: 1, text: "Office itinerancy", type: "project", start_date: "02-05-2026 00:00", duration: 12, progress: 0.4, owner: [{ resource_id: "6", value: 3 }], parent: 0, open: true },
+    { id: 2, text: "Office facing", type: "project", start_date: "02-05-2026 00:00", duration: 8, progress: 0.6, owner: [{ resource_id: "6", value: 4 }], parent: 1, open: true },
+    { id: 3, text: "Furniture installation", type: "task", start_date: "11-05-2026 00:00", duration: 6, progress: 0.6, owner: [{ resource_id: "7", value: 5 }], parent: 2 },
+    { id: 4, text: "Integration", type: "task", start_date: "13-05-2026 00:00", duration: 4, progress: 0.5, owner: [{ resource_id: "8", value: 2 }], parent: 2 },
+    { id: 5, text: "Testing", type: "task", start_date: "16-05-2026 00:00", duration: 3, progress: 0.3, owner: [{ resource_id: "9", value: 4 }], parent: 2 },
+    { id: 6, text: "Documentation", type: "task", start_date: "20-05-2026 00:00", duration: 5, progress: 0.2, owner: [{ resource_id: "6", value: 2 }], parent: 2 }
   ],
   links: [
     { id: 1, source: 1, target: 2, type: "0" },
