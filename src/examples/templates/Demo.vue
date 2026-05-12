@@ -3,6 +3,7 @@ import { computed, h, ref } from "vue";
 import {
   VueGantt,
   type GanttConfigOptions,
+  type OnBeforeTaskDeleteConfirmArgs,
   type SerializedLink,
   type SerializedTask,
   type Task,
@@ -12,6 +13,8 @@ import "@dhtmlx/trial-vue-gantt/dist/vue-gantt.css";
 
 import DoneToggleButton from "./components/DoneToggleButton.vue";
 import FilterDropdown, { type TemplateFilterMode } from "./components/FilterDropdown.vue";
+import TaskDeleteDialog from "./components/TaskDeleteDialog.vue";
+import TaskTextBadge from "./components/TaskTextBadge.vue";
 import { createProjectData } from "../shared/projectData";
 
 type TaskWithCompleted = SerializedTask & {
@@ -63,8 +66,40 @@ const toggleCompleted = (taskId: string | number) => {
   });
 };
 
+const templates = {
+  task_text: (_start: Date, _end: Date, task: Task) =>
+    h(TaskTextBadge, {
+      task,
+      onToggle: () => toggleCompleted(task.id)
+    })
+} as any;
+
+const showTaskDeleteDialog = ref(false);
+const pendingTaskDelete = ref<{ message: string; callback: () => void } | null>(null);
+
+const handleDeleteTaskConfirm = ({ task, callback }: OnBeforeTaskDeleteConfirmArgs) => {
+  pendingTaskDelete.value = {
+    message: `Are you sure you want to delete "${task.text}"?`,
+    callback
+  };
+  showTaskDeleteDialog.value = true;
+};
+
+const onDialogConfirm = () => {
+  pendingTaskDelete.value?.callback();
+  pendingTaskDelete.value = null;
+};
+
+const onDialogCancel = () => {
+  pendingTaskDelete.value = null;
+};
+
+const modals = {
+  onBeforeTaskDelete: handleDeleteTaskConfirm
+};
+
 const config = computed<Partial<GanttConfigOptions>>(() => ({
-  row_height: 44,
+  row_height: 50,
   scale_height: 70,
   columns: [
     { name: "text", tree: true, width: 220, resize: true },
@@ -146,6 +181,15 @@ const expandAll = () => {
       :theme="theme"
       :locale="locale"
       :config="config"
+      :templates="templates"
+      :modals="modals"
+    />
+
+    <TaskDeleteDialog
+      v-model="showTaskDeleteDialog"
+      :text="pendingTaskDelete?.message ?? ''"
+      @confirm="onDialogConfirm"
+      @cancel="onDialogCancel"
     />
   </section>
 </template>

@@ -14,7 +14,7 @@ npm install
 npm start
 ```
 
-The app starts locally with the public trial wrapper package `@dhtmlx/trial-vue-gantt` pinned to `^9.1.4`.
+The app starts locally with the public trial wrapper package `@dhtmlx/trial-vue-gantt` pinned to `^9.1.5-beta1`.
 
 ## Build for production
 
